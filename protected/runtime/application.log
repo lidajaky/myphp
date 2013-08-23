@@ -186,3 +186,7 @@ REQUEST_URI=/index.php
 in D:\wamp\www\boluo\protected\views\layouts\main.php (32)
 in D:\wamp\www\boluo\protected\views\layouts\column1.php (6)
 in D:\wamp\www\boluo\protected\controllers\SiteController.php (32)
+2013/08/23 02:46:03 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'boluo.content' doesn't exist. The SQL statement executed was: SHOW FULL COLUMNS FROM `content`.
+in D:\wamp\www\boluo\index.php (13)
+2013/08/23 02:47:57 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'boluo.ad_type' doesn't exist. The SQL statement executed was: SHOW FULL COLUMNS FROM `ad_type`.
+in D:\wamp\www\boluo\index.php (13)
