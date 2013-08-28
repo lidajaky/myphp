@@ -53,8 +53,8 @@ class Category1 extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'name' => 'Name',
-			'status' => 'Status',
+			'name' => '类名',
+			'status' => '状态',
 		);
 	}
 

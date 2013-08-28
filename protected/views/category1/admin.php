@@ -1,9 +1,9 @@
 <?php
-/* @var $this AdminController */
-/* @var $model Admin */
+/* @var $this Category1Controller */
+/* @var $model Category1 */
 
 $this->breadcrumbs=array(
-	'会员'=>array('admin'),
+	'一级分类'=>array('admin'),
 	'管理',
 );
 
@@ -15,7 +15,7 @@ $('.search-button').click(function(){
 	return false;
 });
 $('.search-form form').submit(function(){
-	$('#admin-grid').yiiGridView('update', {
+	$('#category1-grid').yiiGridView('update', {
 		data: $(this).serialize()
 	});
 	return false;
@@ -23,33 +23,21 @@ $('.search-form form').submit(function(){
 ");
 ?>
 
-<h1>管理员列表</h1>
+<h1>一级分类管理</h1>
 
 
 
 <?php $this->widget('zii.widgets.grid.CGridView', array(
-	'id'=>'admin-grid',
+	'id'=>'category1-grid',
 	'dataProvider'=>$model->search(),
 	'filter'=>$model,
 	'columns'=>array(
-		'id',
-		'login_name',
-		//'password',
-		'user_name',
-		'email',
-		'mobile',
-		/*
-		'role',
-		
-		'update_time:date',
-		'',
-		*/
-		'insert_time:date',
+		//'id',
+		'name',
 		array("name"=>"status","value"=>'Admin::$status[$data->status]','filter'=>Admin::$status),
-		
 		array(
 			'class'=>'CButtonColumn',
-			'template' => '{update}{delete}',
+			'template' => '{update}',
             /*'buttons' => array(
                 'viewsubcat' => array(
                     'label' => '查看子类',

@@ -77,6 +77,8 @@ class SiteController extends Controller
 	 */
 	public function actionLogin()
 	{
+		if(@Yii::app()->session['user_message']->id>0)$this->redirect(array('/admin/admin'));
+		
 		$model=new LoginForm;
 
 		// if it is ajax validation request

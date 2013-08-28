@@ -21,60 +21,43 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'login_name'); ?>
-		<?php echo $form->textField($model,'login_name',array('size'=>60,'maxlength'=>255)); ?>
+		<?php echo $form->textField($model,'login_name',array('size'=>30,'maxlength'=>255)); ?>
 		<?php echo $form->error($model,'login_name'); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'password'); ?>
-		<?php echo $form->passwordField($model,'password',array('size'=>60,'maxlength'=>255)); ?>
+		<?php echo $form->passwordField($model,'password',array('size'=>30,'maxlength'=>255)); ?>
 		<?php echo $form->error($model,'password'); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'user_name'); ?>
-		<?php echo $form->textField($model,'user_name',array('size'=>60,'maxlength'=>255)); ?>
+		<?php echo $form->textField($model,'user_name',array('size'=>30,'maxlength'=>255)); ?>
 		<?php echo $form->error($model,'user_name'); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'email'); ?>
-		<?php echo $form->textField($model,'email',array('size'=>60,'maxlength'=>255)); ?>
+		<?php echo $form->textField($model,'email',array('size'=>50,'maxlength'=>255)); ?>
 		<?php echo $form->error($model,'email'); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'mobile'); ?>
-		<?php echo $form->textField($model,'mobile',array('size'=>60,'maxlength'=>255)); ?>
+		<?php echo $form->textField($model,'mobile',array('size'=>50,'maxlength'=>255)); ?>
 		<?php echo $form->error($model,'mobile'); ?>
 	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'role'); ?>
-		<?php echo $form->textField($model,'role'); ?>
-		<?php echo $form->error($model,'role'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'insert_time'); ?>
-		<?php echo $form->textField($model,'insert_time',array('size'=>11,'maxlength'=>11)); ?>
-		<?php echo $form->error($model,'insert_time'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'update_time'); ?>
-		<?php echo $form->textField($model,'update_time',array('size'=>11,'maxlength'=>11)); ?>
-		<?php echo $form->error($model,'update_time'); ?>
-	</div>
+	
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'status'); ?>
-		<?php echo $form->textField($model,'status'); ?>
+		<?php echo $form->dropDownList($model,'status',Admin::$status); ?>
 		<?php echo $form->error($model,'status'); ?>
 	</div>
 
 	<div class="row buttons">
-		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
+		<?php echo CHtml::submitButton($model->isNewRecord ? '创建' : '保存'); ?>
 	</div>
 
 <?php $this->endWidget(); ?>

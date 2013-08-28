@@ -23,9 +23,9 @@ class UserIdentity extends CUserIdentity
 			'condition'=>'login_name=:login_name',
 			'params'=>array(':login_name'=>$this->username),
 		));
-		if(empty($this->user_message))
+		if(empty($this->user_message)||empty($this->user_message->status))
 			$this->errorCode=self::ERROR_USERNAME_INVALID;
-		elseif($this->user_message->password!==md5($this->password))
+		elseif($this->user_message->password!=md5($this->password))
 			$this->errorCode=self::ERROR_PASSWORD_INVALID;
 		else
 			$this->errorCode=self::ERROR_NONE;

@@ -1,6 +1,6 @@
 <?php
 
-class AdminController extends Controller
+class Category1Controller extends Controller
 {
 	/**
 	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
@@ -32,17 +32,18 @@ class AdminController extends Controller
 			//	'users'=>array('*'),
 			//),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update','admin','delete'),
+				'actions'=>array('create','update','admin'),
 				'users'=>array('@'),
 			),
-			/*array('allow', // allow admin user to perform 'admin' and 'delete' actions
+		/*	array('allow', // allow admin user to perform 'admin' and 'delete' actions
 				'actions'=>array('admin','delete'),
 				'users'=>array('admin'),
 			),
-			*/
+		*/
 			array('deny',  // deny all users
 				'users'=>array('*'),
 			),
+		
 		);
 	}
 
@@ -63,19 +64,14 @@ class AdminController extends Controller
 	 */
 	public function actionCreate()
 	{
-		$model=new Admin;
+		$model=new Category1;
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['Admin']))
+		if(isset($_POST['Category1']))
 		{
-			$time=time();
-			$model->attributes=$_POST['Admin'];
-			$model->insert_time=$time;
-			$model->update_time=$time;
-			$model->password=md5($model->password);
-			
+			$model->attributes=$_POST['Category1'];
 			if($model->save())
 				$this->redirect(array('admin'));
 		}
@@ -93,18 +89,13 @@ class AdminController extends Controller
 	public function actionUpdate($id)
 	{
 		$model=$this->loadModel($id);
-		
+
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['Admin']))
+		if(isset($_POST['Category1']))
 		{
-			$password=$model->password;
-			$model->attributes=$_POST['Admin'];
-			$model->updatetime=time();
-			
-			if($password!=$model->password)$model->password=md5($model->password);
-			
+			$model->attributes=$_POST['Category1'];
 			if($model->save())
 				$this->redirect(array('admin'));
 		}
@@ -133,7 +124,7 @@ class AdminController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$dataProvider=new CActiveDataProvider('Admin');
+		$dataProvider=new CActiveDataProvider('Category1');
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
 		));
@@ -144,10 +135,10 @@ class AdminController extends Controller
 	 */
 	public function actionAdmin()
 	{
-		$model=new Admin('search');
+		$model=new Category1('search');
 		$model->unsetAttributes();  // clear any default values
-		if(isset($_GET['Admin']))
-			$model->attributes=$_GET['Admin'];
+		if(isset($_GET['Category1']))
+			$model->attributes=$_GET['Category1'];
 
 		$this->render('admin',array(
 			'model'=>$model,
@@ -158,12 +149,12 @@ class AdminController extends Controller
 	 * Returns the data model based on the primary key given in the GET variable.
 	 * If the data model is not found, an HTTP exception will be raised.
 	 * @param integer $id the ID of the model to be loaded
-	 * @return Admin the loaded model
+	 * @return Category1 the loaded model
 	 * @throws CHttpException
 	 */
 	public function loadModel($id)
 	{
-		$model=Admin::model()->findByPk($id);
+		$model=Category1::model()->findByPk($id);
 		if($model===null)
 			throw new CHttpException(404,'The requested page does not exist.');
 		return $model;
@@ -171,11 +162,11 @@ class AdminController extends Controller
 
 	/**
 	 * Performs the AJAX validation.
-	 * @param Admin $model the model to be validated
+	 * @param Category1 $model the model to be validated
 	 */
 	protected function performAjaxValidation($model)
 	{
-		if(isset($_POST['ajax']) && $_POST['ajax']==='admin-form')
+		if(isset($_POST['ajax']) && $_POST['ajax']==='category1-form')
 		{
 			echo CActiveForm::validate($model);
 			Yii::app()->end();
